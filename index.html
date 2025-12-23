@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тетрис</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <div class="game-menu show" id="gameMenu">
+        <h2> Тетрис </h2>
+        <div class="settings">
+    
+            <label>
+                Режим игры:
+                <select id="gameMode">
+                    <option value="classic">Классический</option>
+                    <option value="marathon">Марафон (150 линий)</option>
+                    <option value="sprint">Спринт (40 линий)</option>
+                </select>
+            </label>
+            <label>
+                Начальный уровень:
+                <select id="startLevel">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </label>
+            <label>
+                <input type="checkbox" id="soundToggle" checked> Звуковые эффекты
+            </label>
+        </div>
+        <button id="startMenuBtn">Начать игру</button>
+    </div>
+
+    <div class="container">
+        <div class="game-area">
+            <canvas id="tetris" width="300" height="600"></canvas>
+            <div class="mobile-controls" id="mobileControls">
+                <button class="mobile-btn" id="btnRotate">↻</button>
+                <button class="mobile-btn" id="btnHold">⏸</button>
+                <button class="mobile-btn" id="btnDrop">↓↓</button>
+                <button class="mobile-btn" id="btnLeft">←</button>
+                <button class="mobile-btn" id="btnDown">↓</button>
+                <button class="mobile-btn" id="btnRight">→</button>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            
+            <div class="info-box game-mode" id="gameModeDisplay">
+                Режим: Классический
+            </div>
+
+            <div class="info-box">
+                <h3>Счёт</h3>
+                <div class="score" id="score">0</div>
+            </div>
+            
+            <div class="info-box">
+                <h3>Уровень</h3>
+                <div class="level" id="level">1</div>
+            </div>
+            
+            <div class="info-box">
+                <h3>Линии</h3>
+                <div class="lines" id="lines">0 / ∞</div>
+            </div>
+
+            <div class="info-box" id="timerBox" style="display: none;">
+                <h3>Время</h3>
+                <div class="timer" id="timer">00:00</div>
+            </div>
+
+            <div class="info-box" id="comboBox" style="display: none;">
+                <h3>Комбо</h3>
+                <div class="combo" id="combo">0</div>
+            </div>
+            
+            <div class="info-box">
+                <h3>Следующая</h3>
+                <canvas class="next-piece" id="next" width="100" height="100"></canvas>
+            </div>
+
+            <div class="info-box">
+                <h3>Hold (C)</h3>
+                <canvas class="hold-piece" id="hold" width="100" height="100"></canvas>
+            </div>
+            
+            <button id="pauseBtn">Пауза</button>
+            <button id="menuBtn">Меню</button>
+            
+            <div class="controls">
+                <h3>Управление</h3>
+                <p>← → : Движение</p>
+                <p>↑ : Поворот</p>
+                <p>↓ : Ускорение</p>
+                <p>Пробел : Сброс</p>
+                <p>C : Hold</p>
+                <p>P : Пауза</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Рекорды</h3>
+                <div class="leaderboard" id="leaderboard">
+                    <div style="text-align: center; opacity: 0.7;">Нет записей</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-over" id="gameOver">
+        <h2>Игра окончена!</h2>
+        <p>Счёт: <span id="finalScore">0</span></p>
+        <p>Линий: <span id="finalLines">0</span></p>
+        <p id="finalTime" style="display: none;">Время: <span id="finalTimeValue">00:00</span></p>
+        <button id="restartBtn">Играть снова</button>
+        <button id="menuBtn2">Меню</button>
+    </div>
+
+<script src="/script.js"></script>
+</body>
+</html>
